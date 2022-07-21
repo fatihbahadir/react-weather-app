@@ -18,7 +18,7 @@ function App() {
       .then((response) => {
         setWeather(response.data);
         setLoading(false);
-        setError(false);
+        setError(false)
       })
       .catch((err) => {
         if (err.response.status === 404) {
