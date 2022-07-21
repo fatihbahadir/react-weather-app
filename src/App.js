@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useEffect, useState } from "react";
+import { Grid } from "semantic-ui-react";
+import axios from "axios";
+import WeatherArea from "./components/WeatherArea";
+import CityArea from "./components/CityArea";
+import InputArea from "./components/InputArea";
 function App() {
+  const [city, setCity] = useState();
+  const [show, setShow] = useState("");
+  const [weather, setWeather] = useState();
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
+      )
+      .then((response) => {
+        setWeather(response.data);
+        setLoading(false);
+        setError(false);
+      })
+      .catch((err) => {
+        if (err.response.status === 404) {
+          setError(err);
+        }
+      });
+  }, [city]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Grid columns="equal" style={{ height: "100vh", margin: "0px" }}>
+      <InputArea setCity={setCity} setShow={setShow} setLoading={setLoading}  />
+      <CityArea error={error} show={show} />
+      <WeatherArea loading={loading} weather={weather} city={city} />
+    </Grid>
   );
 }
 

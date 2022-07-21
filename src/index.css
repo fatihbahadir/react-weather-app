@@ -11,3 +11,57 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.input-area-row{
+  background: #001a26; 
+  padding: 20px;
+  height: 15vh;
+}
+.search-input{
+  width: 100vh;
+  margin: auto;
+  height: 7vh;
+}
+
+.text-area-row{
+  background-color:#053752;
+  opacity:1;
+  padding:20px;
+  height:15vh
+}
+.text-area-row > label{
+  margin: auto;
+  font-weight: 700;
+  letter-spacing: 25px;
+  font-size: 9vh;
+  color :#B0E0E6;
+}
+.main-content{
+  height:70vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+  background-size: 100% 100%
+}
+#main-card{
+  margin: auto;
+  padding: 50px;
+  box-shadow: none;
+  background-color: rgba(0, 26, 38, 0.1);
+
+}
+#main-card > div{
+  font-weight: 800;
+  color: #FAFAD2;
+  font-size: 4vh;
+  text-align: center;
+  letter-spacing: 6px;
+}
+#main-card > p{
+  font-weight: 900;
+  color:#E5DE44;
+  font-size: 10vh;
+  letter-spacing: 5px;
+  text-align: center;
+  margin-top: 10px;
+} 
